@@ -1,36 +1,33 @@
 #ifndef USUARIO_H
 #define USUARIO_H
-#include <string>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 class Usuario{
-    public:
-
-    Usuario(){
-        tipo = "";
-        id = 0;
-        nombre = "";
-    }
-
-    Usuario(string tipo_, int id_, string nombre_){
-        tipo = tipo_;
-        id = id_;
-        nombre = nombre_;
-    }
-
-    string obtenerInfoUsuario();
-
-    private:
-        string tipo;
+    //Atributos
+    protected:
+        string tipoDeUsuario;
         int id;
         string nombre;
-};
+    
+    public:
+        //Constructores
+        Usuario();
+            Usuario(string tipoDeUsuario_, int id_, string nombre_);
 
-string Usuario::obtenerInfoUsuario(){
-    string infoUsuario = "Tipo de Usuario: " + tipo + "\nID: " + to_string(id) + "\nNombre: " + nombre;
-    return infoUsuario;
-}
+        //Getters
+        string getInfoUsuario();
+
+        //Setters
+        void setTipoDeUsuario(string tipoDeUsario_);
+        void setID(int id_);
+        void setNombre(string nombre_);
+
+        //Métodos para el sistema de inicio de sesión
+        void registrar(string tipoDeUsuario_, string nombre_, int id_);
+        void iniciarSesion(string nombre_, int id_);
+};
 
 #endif

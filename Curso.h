@@ -1,34 +1,30 @@
 #ifndef CURSO_H
 #define CURSO_H
-#include <string>
 #include <iostream>
-#include "Maestro.h"
-#include "Calificacion.h"
+#include <string>
+#include "PlanDeEvaluacion.cpp"
 
 using namespace std;
 
 class Curso{
+    //Atributos
     private:
-        string nombre;
-        int id;
-        Maestro maestro;
-        Calificacion* calificacion;
-        
+        string nombreCurso;
+        int idCurso;
+        PlanDeEvaluacion planDeEvaluacion;
+    
     public:
-        Curso(){}
-        Curso(string nombre_, int id_, const Maestro& maestro_, const Calificacion& calificacion){
-            nombre = nombre_;
-            id = id_;
-            maestro = maestro_;
-        }
-        string obtenerInfoCurso() const;
+        //Constructores
+        Curso();
+            Curso(string nombreCurso_, int idCurso_, PlanDeEvaluacion planDeEvaluacion_);
 
+        //Getters
+        string getInfoCurso();
+
+        //Setters
+        void setNombreCurso(string nombreCurso_);
+        void setIDCurso(int idCurso_);
+        void cambiarPlanDeEvaluacion(int porcentajeExamenes_, int porcentajeTareas_, int porcentajeProyecto_);
 };
-
-string Curso::obtenerInfoCurso(){
-    float CalifCurso = calificacion.obtenerValorFinal();
-    string mensajeFinal = "\nNombre del Curso: " + nombre + "\nID del Curso: " + to_string(id) + "\nCalificación del Curso: " + to_string(CalifCurso);
-    return mensajeFinal;
-}
 
 #endif
